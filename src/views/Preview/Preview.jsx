@@ -48,6 +48,9 @@ const Preview = () => {
               />
         })}
         <DateSelected />
+        <div style={{ background: '#0072ff', width: 334, height: 45, display: 'flex', justifyContent: 'center', borderRadius: 5 }}>
+          <button style={{ color: 'white', width: '100%' }}>Enviar WhatsApp</button>
+        </div>
       </div>
     </section>
   )

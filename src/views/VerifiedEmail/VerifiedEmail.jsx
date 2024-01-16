@@ -9,7 +9,7 @@ const VerifiedEmail = () => {
   const token = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const user = useSelector(state => state.user.userState)
+  const user = useSelector(state => state.userState)
   console.log(user)
 
   useEffect(() => {

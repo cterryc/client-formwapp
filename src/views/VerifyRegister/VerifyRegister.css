@@ -1,6 +1,10 @@
 .section-verifyregister {
   height: 100%;
   width: 100%;
+  background-image: url("../../assets/bg-01.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
 
   display: flex;
   justify-content: center;

@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
 const VerifyRegister = () => {
-  const { userState } = useSelector(state => state.user)
+  const { userState } = useSelector(state => state)
   const navigate = useNavigate()
   const { state } = useLocation()
   console.log(state)

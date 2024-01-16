@@ -56,7 +56,7 @@ const CountrySelect = ({ setData, data, error }) => {
         >
           <TextField
             id='outlined-controlled'
-            size='small'
+            // size='small'
             required
             error={error}
             label='Numero'
