@@ -1,0 +1,267 @@
+/* 
+Poppins-Regular
+Poppins-Medium
+Poppins-Bold
+Poppins-SemiBold 
+*/
+
+.section-login {
+  color: black;
+  height: 100%;
+  width: 100%;
+  font-family: Poppins-Medium;
+  background-image: url("../../assets/bg-01.jpg");
+  /* object-fit: cover; */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.section-image-login {
+  width: 100%;
+  background-color: rgb(255, 255, 255, 0.6);
+  height: 100%;
+  padding: 200px 0;
+
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section-image-h1-login {
+  font-size: 40px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-login {
+  width: 500px;
+}
+
+.divcontainerform-login {
+  height: 100%;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.section-form-login {
+  background-color: rgb(240, 248, 255);
+  height: 600px;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-login {
+  height: 30px;
+  font-size: 30px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+.form-login {
+  height: 400px;
+  width: 350px;
+  padding: 40px 0;
+  padding-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.divbutton-login {
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+}
+
+.button-login {
+  background-color: aquamarine;
+  height: 40px;
+  width: 220px;
+  border-radius: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.button-login:hover {
+  background-color: rgb(83, 149, 236)
+}
+
+.footer-login {
+  font-size: 14px;
+  width: 100%;
+
+  /* display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; */
+}
+
+.h4-footer-login {
+  width: 100%;
+  text-align: center;
+  /* display: inline; */
+}
+
+.link-footer-login {
+  display: inline;
+  color: blue;
+  text-decoration: underline;
+}
+
+.header-image-login {
+  display: none;
+}
+
+.password-reset {
+  height: 18px;
+  font-size: 12px;
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.password-reset:hover {
+  box-shadow: 0px 1px 0px 0px blue;
+  cursor: pointer;
+  color: blue;
+}
+
+@media screen and (max-width: 749px) {
+  .section-image-login {
+    display: none;
+  }
+
+  .section-image-h1-login {
+    display: none;
+  }
+
+  .link-inicio-login {
+    display: none;
+  }
+
+  .section-login {
+    width: auto;
+    min-height: 600px;
+    height: auto;
+    position: relative;
+  }
+
+  .divcontainerform-login {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .section-form-login {
+    width: 100%;
+    max-width: 300px;
+    height: 560px;
+  }
+
+  .form-login {
+    max-width: 350;
+    width: auto;
+  }
+
+  .header-login {
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    height: 140px;
+    justify-content: space-between;
+  }
+
+  .header-image-login {
+    height: 60px;
+    width: 65px;
+    /* margin-bottom: 20px; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .password-reset {
+    height: 18px;
+    font-size: 12px;
+    box-shadow: 0px 1px 0px 0px;
+  }
+
+  .link-image-login {
+    margin-top: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* ======Loader-Login======== */
+.loader-login {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+
+.loader-login::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #0083f5;
+  animation: prixClipFix 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
+}

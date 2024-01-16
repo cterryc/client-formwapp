@@ -1,0 +1,265 @@
+.section-register {
+  color: black;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  font-family: Poppins-Medium;
+  background-image: url("../../assets/bg-01.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-inicio-login {
+  position: fixed;
+  top: 50px;
+  left: 80px;
+}
+
+.link-inicio-login {
+  font-size: 20px;
+}
+
+.link-inicio-login:hover {
+  color: aqua;
+}
+
+.section-image-register {
+  width: 100%;
+  background-color: rgb(255, 255, 255, 0.6);
+  height: 100vh;
+  padding: 200px 0;
+
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section-form-register {
+  background-color: rgb(240, 248, 255);
+  height: 600px;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-image-h1-register {
+  font-size: 40px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divcontainerform-register {
+  height: 100%;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.image-register {
+  width: 500px;
+}
+
+.header-register {
+  height: 30px;
+  font-size: 30px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+.form-register {
+  height: 400px;
+  width: 350px;
+  padding: 40px 0;
+  padding-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.divbutton-register {
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+}
+
+.button-register {
+  background-color: aquamarine;
+  height: 40px;
+  width: 220px;
+  border-radius: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.button-register:hover {
+  background-color: rgb(83, 149, 236)
+}
+
+.footer-register {
+  font-size: 14px;
+  width: 100%;
+
+  /* display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; */
+}
+
+.h4-footer-register {
+  width: 100%;
+  text-align: center;
+  /* display: inline; */
+}
+
+.link-footer-register {
+  display: inline;
+  color: blue;
+  text-decoration: underline;
+}
+
+.link-image-register {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .section-image-register {
+    display: none;
+  }
+
+  .section-image-h1-register {
+    display: none;
+  }
+
+  .link-inicio-register {
+    display: none;
+  }
+
+  .section-register {
+    width: auto;
+    min-height: 600px;
+    height: auto;
+    position: relative;
+  }
+
+  .divcontainerform-register {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .section-form-register {
+    width: 100%;
+    max-width: 300px;
+    height: 560px;
+  }
+
+  .form-register {
+    max-width: 350;
+    width: auto;
+  }
+
+  .header-register {
+    padding: 0;
+    margin: 0;
+    margin-top: 12px;
+
+    display: flex;
+    flex-direction: column;
+    height: 140px;
+    justify-content: space-between;
+  }
+
+  .header-image-register {
+    height: 60px;
+    width: 65px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .password-reset {
+    height: 18px;
+    font-size: 12px;
+    box-shadow: 0px 1px 0px 0px;
+  }
+
+  .link-image-register {
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* =======Loader ======== */
+
+.loader-register {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+
+.loader-register::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #0083f5;
+  animation: prixClipFix 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
+}

@@ -1,0 +1,153 @@
+.section-dashboard {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px ;
+}
+
+.prevista-section {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  z-index: 99;
+  top: 40px;
+  right: 0px;
+  background: #7b71ee;
+  min-width: 120px;
+  min-height: 30px;
+  font-size: 18px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.prevista-section:hover {
+  background: #a9a3e9;
+  cursor: pointer;
+}
+
+.guardar-section {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  z-index: 99;
+  top: 80px;
+  right: 0px;
+  background: #7b71ee;
+  min-width: 100px;
+  min-height: 30px;
+  font-size: 18px;
+  border-radius: 5px 0px 0px 5px;
+
+  display: flex;
+  align-items: center;
+}
+
+.guardar-section:hover {
+  background: #a9a3e9;
+  cursor: pointer;
+}
+
+.buttonsInputs-dashboard {
+  border: solid 1px #d1d1d1;
+  border-radius: 5px;
+  width: 25%;
+  height: 760px;
+  position: relative;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(240, 248, 255, 0.8);
+}
+
+.selectedInputs-dashboard {
+  /* border: solid 1px rgb(51, 49, 49); */
+  border-radius: 5px;
+  width: 60%;
+  height: 850px;
+  /* background-color: rgba(240, 248, 255, 0.8); */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.button-container-dashboard {
+  width: 90%;
+}
+
+.buttons-dashboard {
+  height: 40px;
+  background-color: cornflowerblue;
+  color: aliceblue;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buttons-dashboard:hover {
+  box-shadow: 0px 0px 5px rgb(119, 118, 118);
+}
+
+.buttonContainer-dashboard {
+  min-height: 65px;
+  background-color: rgba(255, 255, 255, 0.774);
+  width: 600px;
+  border: solid 1px #d1d1d1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-dasboard {
+  height: 40px;
+  background-color: #7b71ee;
+  color: white;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-dasboard:hover {
+  background-color: #a9a3e9;
+}
+
+.tittle-selectButton-dashboard {
+  font-family: Poppins-Medium;
+  font-size: 26px;
+  margin-bottom: 20px;
+  width: 80%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: rgb(82, 82, 255);
+  /* position: absolute; */
+  /* top: 40px; */
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+}
+
+.containerButtos-dashboard {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px ;
+  align-items: center;
+}
+
+.marcaUsuario-dashboard {
+    min-height: 150px;
+    background-color: rgba(255, 255, 255, 0.774);
+    width: 600px;
+    border: solid 1px #d1d1d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

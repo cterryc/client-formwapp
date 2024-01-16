@@ -1,0 +1,33 @@
+.section-app {
+  height: 100vh;
+  /* max-height: 100vh; */
+  width: 100vw;
+
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-app {
+  /* background-image: -linear-gradient-webkit(to top right, #00ffff 100%); */
+  color: black;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  /* background-image: url("./assets/bg-01.jpg"); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* .footer-app {
+  color: black;
+} */
+
+@media screen and (max-width: 749px) {
+  .section-app {
+    height: 100%;
+    width: 100%;
+  }
+}

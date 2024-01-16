@@ -1,0 +1,81 @@
+.div-inputlogin {
+  height: 80px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label-inputlogin {
+  margin-left: 12px;
+  font-size: 14px;
+}
+
+.input-inputlogin {
+  background-color: rgb(0, 0, 0, 0.1);
+  border-radius: 20px;
+  height: 35px;
+  width: 220px;
+  outline: none;
+  /* outline-width: 5px; */
+  /* outline-color: rgba(19, 114, 114, 0.322); */
+  text-indent: 15px;
+  /* text-align: center; */
+  transition: all 0.6s ease;
+}
+
+.input-inputlogin.pass {
+
+  border-radius: 20px 0px 0px 20px;
+  height: 35px;
+  width: 185px;
+  /* outline: none; */
+  outline-width: 5px;
+  outline-color: rgba(19, 114, 114, 0.322);
+  text-indent: 15px;
+  /* text-align: center; */
+}
+
+.input-inputlogin::selection {
+  background-color: rgb(154, 156, 245);
+  /* Color de fondo de la selección */
+}
+
+.input-inputlogin.pass::selection {
+  background-color: rgb(154, 156, 245);
+  /* Color de fondo de la selección */
+}
+
+.div-input-inputlogin {
+  display: flex;
+  width: 220px;
+}
+
+.input-inputlogin:focus {
+  background-color: rgba(75, 241, 241, 0.521);
+}
+
+.button-inputlogin {
+  width: 35px;
+  padding: 7px;
+  background-color: rgb(0, 0, 0, 0.1);
+  border-radius: 0px 20px 20px 0px;
+  cursor: pointer;
+  transition: all 0.6s ease;
+}
+
+.warning-inputlogin {
+  position: absolute;
+  right: 0;
+  width: 35px;
+  padding: 7px;
+}
+
+.input-inputlogin:focus+.button-inputlogin {
+  background-color: rgba(75, 241, 241, 0.521);
+}
+
+.button-inputlogin:hover {
+  background-color: aquamarine;
+}

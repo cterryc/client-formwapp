@@ -1,0 +1,109 @@
+.section-navbar {
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+
+  display: flex;
+  justify-content: center;
+}
+
+.nav-navbar {
+  width: 90%;
+  height: 50px;
+  color: rgb(255, 255, 255);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div-navbar {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.h3-navbar {
+  margin: 0 5px;
+  font-size: 22px;
+  cursor: context-menu;
+}
+
+.button-logout {
+  height: 35px;
+  width: 60px;
+  border-radius: 10px;
+  background-color: #ce3ac1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: aliceblue;
+  font-weight: bold;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-logout:hover {
+  box-shadow: 0px 0px 3px 1px #00000033;
+  background-color: #8128aa;
+}
+
+.button-miCuenta {
+  cursor: pointer;
+}
+
+.miCuenta-navbar {
+  border: solid 1px #4c99e9;
+  border-radius: 10px;
+  width: 100px;
+  height: 35px;
+  color: #5284ff;
+  transition: all 0.4s ease;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.miCuenta-navbar:hover {
+  background: #94c0f0;
+  color: azure;
+}
+
+.login-navbar {
+  border: solid 1px #4c99e9;
+  border-radius: 10px;
+  width: 100px;
+  height: 35px;
+  color: #5284ff;
+  transition: all 0.4s ease;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-navbar:hover {
+  background: #94c0f0;
+  color: azure;
+}
+
+.register-navbar {
+  height: 35px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: #ce3ac1;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  color: aliceblue;
+  font-weight: bold;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-navbar:hover {
+  box-shadow: 0px 0px 3px 1px #00000033;
+  background-color: #8128aa;
+}
