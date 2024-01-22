@@ -6,9 +6,14 @@ import './Dashboard.css'
 import ImageUpload from '../../components/ImageUpload/ImageUpload'
 import SaveSvg from '../../assets/save'
 import { setPreviewInputs } from '../../redux/slice/inputsSlice'
+import { MdOutlinePhoneIphone } from 'react-icons/md'
+import { FaCaretDown } from 'react-icons/fa6'
+import { countries } from '../Preview/PreviewInputs/services/countries.service'
+import { patchUserTel } from '../../redux/actions'
 
 const Dashboard = () => {
-  const userState = useSelector(state => state.userState)
+  const { userState } = useSelector(state => state)
+  console.log(userState)
   const navigate = useNavigate()
   const inputButtons = [
     { name: 'Nombre', id: 'name', type: 'text' },
@@ -18,15 +23,21 @@ const Dashboard = () => {
     { name: 'DNI', id: 'number', type: 'number' }
   ]
   const [arrayInputs, setArrayIputs] = useState([])
+  const [phone, setPhone] = useState(null)
+  const [selectValue, setSelectValue] = useState(null)
+  const [alert, setAlert] = useState(null)
   const disaptch = useDispatch()
   const inputState = useSelector(state => state.inputsState)
-  console.log(inputState)
 
   useEffect(() => {
     if (inputState.preview.length > 0) {
       setArrayIputs(inputState.preview)
     }
   }, [])
+
+  useEffect(() => {
+    console.log(selectValue, phone)
+  }, [selectValue])
 
   useEffect(() => {
     if (userState.verified === false) {
@@ -65,6 +76,29 @@ const Dashboard = () => {
     navigate('/preview')
   }
 
+  // Patch prop tel en user
+  const handleOnSubmit = (e) => {
+    e.preventDefault()
+    console.log('esto es alert =>', alert)
+    if (selectValue && phone) {
+      disaptch(patchUserTel({ userId: userState.id, dataToPatch: { tel: { country: selectValue, numberPhone: phone } } }))
+    } else {
+      if (!selectValue && !phone) {
+        setAlert('Complete los espacios')
+      } else if (!selectValue) {
+        setAlert('Elija Cod. País')
+      } else {
+        setAlert('Inserte su número')
+      }
+    }
+  }
+
+  const handleSelectChange = (e) => {
+    console.log('enetro en select')
+    setAlert(null)
+    setSelectValue(e.target.value)
+  }
+
   return (
     <section className='section-dashboard'>
       <button className='prevista-section' onClick={handleGetAllInputs}>Vista Previa</button>
@@ -86,15 +120,93 @@ const Dashboard = () => {
         <img src='assets/profile.svg' alt='profile' style={{ width: '80%', marginTop: '10px' }} />
       </div>
       <div className='selectedInputs-dashboard'>
-        <div style={{ overflowY: 'auto' }}>
-          <div className='marcaUsuario-dashboard'>
-            <ImageUpload />
-          </div>
-          <InputsDashboard arrayInputs={arrayInputs} deleteInput={deleteInput} />
-          <div className='buttonContainer-dashboard'>
-            <button className='button-dasboard'>Enviar</button>
-          </div>
-        </div>
+        {userState.tel
+          ? (
+            <div style={{ overflowY: 'auto' }}>
+              <div className='marcaUsuario-dashboard'>
+                <ImageUpload />
+              </div>
+              <InputsDashboard arrayInputs={arrayInputs} deleteInput={deleteInput} />
+              <div className='buttonContainer-dashboard'>
+                <button className='button-dasboard'>Enviar</button>
+              </div>
+            </div>
+            )
+          : (
+            <form
+              onSubmit={handleOnSubmit}
+              style={{
+                width: 380,
+                color: 'dimgrey',
+                gap: 5,
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <div>
+                Ingrese el celular que recibira los mensajes:
+              </div>
+              <div style={{
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                backgroundColor: '#e9e9e9',
+                borderRadius: '5px',
+                border: '1px solid #d1d1d1'
+              }}
+              >
+                <div style={{ width: 40 }}>
+                  <MdOutlinePhoneIphone size={20} />
+                </div>
+                <div className='select-container-dashboard'>
+                  <select onChange={handleSelectChange} className='selector-dashboard'>
+                    <option
+                      value={selectValue}
+                      defaultValue='Pais'
+                    >Cod. país
+                    </option>
+                    {countries?.map((ele, index) => {
+                      const infoEle = `${ele.code} +${ele.phone}`
+                      return (
+                        <option key={index} value={ele.phone} className='option-selector-dashboard'>{infoEle}</option>
+                      )
+                    })}
+                  </select>
+                  <div className='filterArrow-dashboard'>
+                    {/* <FlechaAbajo /> */}
+                    <FaCaretDown size={30} />
+                  </div>
+                </div>
+                <input
+                  style={{
+                    padding: '12px 12px 12px 12px',
+                    width: '70%',
+                    backgroundColor: '#e9e9e9',
+                    outline: 'none',
+                    borderRadius: '0px 5px 5px 0px',
+                    borderLeft: '1px solid #d1d1d1'
+                  }}
+                  type='text'
+                  placeholder='N° Celular'
+                  onChange={((e) => {
+                    setAlert(null)
+                    setPhone(e.target.value)
+                  })}
+                />
+              </div>
+              <div style={{ marginTop: '10px', position: 'relative' }}>
+                <button
+                  type='submit'
+                  className='button-submit-dashboard'
+                  disabled={alert !== null}
+                >{!userState.loading
+                  ? <>Continuar</>
+                  : <span className='loader' />}
+                </button>
+                {alert !== null && <span style={{ color: 'red' }}>{alert}</span>}
+              </div>
+            </form>
+            )}
       </div>
     </section>
   )

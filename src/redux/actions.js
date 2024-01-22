@@ -42,3 +42,14 @@ export const fetchVerifiedEmail = createAsyncThunk('user/fetchVerifiedEmail',
     return details
   }
 )
+
+export const patchUserTel = createAsyncThunk('user/patchUserTel',
+  async ({ dataToPatch, userId }, thunkAPI) => {
+    console.log('esto es dataToPatch ==>', dataToPatch)
+    const requestOptions = objectPost(dataToPatch) // esto solo retorna un objetoPost
+    const response = await fetch(`${API}/user/${userId}`, requestOptions)
+    const data = await response.json()
+    console.log('esto es data ==>', data)
+    return data
+  }
+)

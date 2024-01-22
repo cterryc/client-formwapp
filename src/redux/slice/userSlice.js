@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   fetchRegister,
   fetchLogin,
-  fetchVerifiedEmail
+  fetchVerifiedEmail,
+  patchUserTel
 } from '../actions.js'
 
 const initialState = {
@@ -17,6 +18,8 @@ const initialState = {
   lastname: null,
   location: null,
   date: null,
+  tel: null,
+  id: null,
   loading: null,
   error: null,
   preview: null
@@ -55,6 +58,8 @@ export const userSlice = createSlice({
       state.loading = null
       state.error = null
       state.preview = null
+      state.tel = null
+      state.id = null
     },
     setPreview: (state, action) => {
       state.preview = action.payload
@@ -82,6 +87,8 @@ export const userSlice = createSlice({
           state.verified = action.payload.verified
           state.lastname = action.payload.lastname
           state.date = action.payload.date
+          state.tel = action.payload.tel
+          state.id = action.payload.id
         }
       })
       .addCase(fetchRegister.rejected, (state, action) => {
@@ -111,6 +118,8 @@ export const userSlice = createSlice({
           state.lastname = action.payload.lastname
           state.location = action.payload.location
           state.date = action.payload.date
+          state.tel = action.payload.tel
+          state.id = action.payload.id
         }
       })
       .addCase(fetchLogin.rejected, (state, action) => {
@@ -143,9 +152,24 @@ export const userSlice = createSlice({
           state.lastname = action.payload.lastname
           state.location = action.payload.location
           state.date = action.payload.date
+          state.tel = action.payload.tel
+          state.id = action.payload.id
         }
       })
       .addCase(fetchVerifiedEmail.rejected, (state, action) => {
+        console.log('entro a rechazado?')
+        state.loading = false
+        state.error = action.error.message
+      })
+      .addCase(patchUserTel.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(patchUserTel.fulfilled, (state, action) => {
+        console.log('esto es action', action.payload)
+        state.tel = action.payload.tel
+        state.loading = false
+      })
+      .addCase(patchUserTel.rejected, (state, action) => {
         console.log('entro a rechazado?')
         state.loading = false
         state.error = action.error.message

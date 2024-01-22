@@ -4,7 +4,7 @@ const local = import.meta.env.VITE_LOCAL
 console.log(local)
 let API_BACK
 if (local) {
-  API_BACK = 'http://192.168.18.21:3001'
+  API_BACK = 'http://192.168.18.24:3001'
 } else {
   API_BACK = import.meta.env.VITE_API
 }
