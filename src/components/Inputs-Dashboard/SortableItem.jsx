@@ -5,13 +5,18 @@ import EditSvg from '../../assets/edit'
 import { useState } from 'react'
 import DeleteSvg from '../../assets/delete'
 import MoveSvg from '../../assets/move'
+import { VscCalendar } from 'react-icons/vsc'
+import { MdOutlinePhoneIphone, MdMailOutline } from 'react-icons/md'
+import { FaRegAddressCard, FaRegUser } from 'react-icons/fa'
+
+const svgSize = 18
 
 const allItems = [
-  { name: 'Nombre', id: 'name', svg: '/assets/user.svg' },
-  { name: 'Correo', id: 'email', svg: '/assets/email.svg' },
-  { name: 'Celular', id: 'tel', svg: '/assets/phone.svg' },
-  { name: 'Fecha', id: 'date', svg: '/assets/date.svg', date: 'Se desplegara el calendario al seleccionar' },
-  { name: 'DNI', id: 'number', svg: '/assets/dni.svg' }
+  { name: 'Nombre', id: 'name', svg: <FaRegUser size={svgSize} color='#474747' /> },
+  { name: 'Correo', id: 'email', svg: <MdMailOutline size={svgSize} color='#474747' /> },
+  { name: 'Celular', id: 'tel', svg: <MdOutlinePhoneIphone size={svgSize} color='#474747' /> },
+  { name: 'Fecha', id: 'date', svg: <VscCalendar size={svgSize} color='#474747' />, date: 'Se desplegara el calendario al seleccionar' },
+  { name: 'DNI', id: 'number', svg: <FaRegAddressCard size={svgSize} color='#474747' /> }
 ]
 
 export default function SortableItem ({ id, deleteInput }) {
@@ -28,10 +33,28 @@ export default function SortableItem ({ id, deleteInput }) {
 
   const matchItem = allItems.find(ele => ele.id === id)
 
+  const handleTouchStart = () => {
+    // Manejar eventos táctiles aquí
+  }
+
+  const handleTouchMove = () => {
+    // Manejar eventos táctiles aquí
+  }
+
+  const handleTouchEnd = () => {
+    // Manejar eventos táctiles aquí
+  }
+
   return (
-    <div ref={setNodeRef} style={style} className='overlayInputs-item'>
+    <div
+      ref={setNodeRef}
+      style={style}
+      className='overlayInputs-item'
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <button
-        // ref={setNodeRef}
         {...listeners}
         {...attributes}
         className='buttonMove-item'
@@ -61,11 +84,14 @@ export default function SortableItem ({ id, deleteInput }) {
       </div>
       <div className='svgContainer-item'>
         <div className='svg-item'>
-          <img src={matchItem.svg} alt={matchItem.id} className='svgImage-item' />
+          {/* <img src={matchItem.svg} alt={matchItem.id} className='svgImage-item' /> */}
+          {matchItem.svg}
         </div>
         {id === 'tel' && (
           <select className='country-item'>
-            <option className='country-item' value='+51'>+51</option>
+            <option className='country-item' value='+51'>
+              +51
+            </option>
           </select>
         )}
 

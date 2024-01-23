@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import InputType from './PreviewInputs/input'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
-import DateSelected from './PreviewInputs/DateSelected'
+// import DateSelected from './PreviewInputs/DateSelected'
+import { IoChevronBackOutline } from 'react-icons/io5'
 
 const Preview = () => {
   const [data, setData] = useState(null)
@@ -28,15 +29,26 @@ const Preview = () => {
     <section className='section-preview'>
       <button
         onClick={goDashboard}
-        style={{ display: 'flex', position: 'absolute', left: 30, top: 30, cursor: 'pointer', backgroundColor: 'aqua' }}
+        className='button-preview'
       >
-        {`${'<'} dashboard`}
+        <div>
+          <IoChevronBackOutline size={20} />
+        </div>
+        Seguir editando
       </button>
       <div className='inputs-xample'>
+        <span className='vistaPrevia'>
+          Esto es una vista previa
+        </span>
         {preview.map((input, index) => {
           return input.id === 'tel'
             ? (
-              <CountrySelect key={index} data={date} setData={setDate} error={error} />
+              <CountrySelect
+                key={index}
+                data={date}
+                setData={setDate}
+                error={error}
+              />
               )
             : <InputType
                 key={index}
@@ -47,9 +59,11 @@ const Preview = () => {
                 id={input.id}
               />
         })}
-        <DateSelected />
-        <div style={{ background: '#0072ff', width: 334, height: 45, display: 'flex', justifyContent: 'center', borderRadius: 5 }}>
-          <button style={{ color: 'white', width: '100%' }}>Enviar WhatsApp</button>
+        {/* <DateSelected /> */}
+        <div className='downButton-preview'>
+          <button style={{ color: 'white', width: '100%', cursor: 'pointer' }}>
+            Enviar WhatsApp
+          </button>
         </div>
       </div>
     </section>

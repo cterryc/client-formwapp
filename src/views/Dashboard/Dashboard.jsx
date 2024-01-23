@@ -9,7 +9,8 @@ import { setPreviewInputs } from '../../redux/slice/inputsSlice'
 import { MdOutlinePhoneIphone } from 'react-icons/md'
 import { FaCaretDown } from 'react-icons/fa6'
 import { countries } from '../Preview/PreviewInputs/services/countries.service'
-import { patchUserTel } from '../../redux/actions'
+import { patchUserTel, postNewForm } from '../../redux/actions'
+import swal from 'sweetalert'
 
 const Dashboard = () => {
   const { userState } = useSelector(state => state)
@@ -28,6 +29,8 @@ const Dashboard = () => {
   const [alert, setAlert] = useState(null)
   const disaptch = useDispatch()
   const inputState = useSelector(state => state.inputsState)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (inputState.preview.length > 0) {
@@ -99,10 +102,20 @@ const Dashboard = () => {
     setSelectValue(e.target.value)
   }
 
+  const handlePostSaveInputs = () => {
+    dispatch(postNewForm({
+      inputs: arrayInputs,
+      brand: 'Marca 1',
+      avatar: userState.avatar,
+      userId: userState.id
+    }))
+    swal('Verificado', 'correcto', 'success')
+  }
+
   return (
     <section className='section-dashboard'>
       <button className='prevista-section' onClick={handleGetAllInputs}>Vista Previa</button>
-      <button className='guardar-section' onClick={handleGetAllInputs}>
+      <button className='guardar-section' onClick={handlePostSaveInputs}>
         <SaveSvg />
         Guardar
       </button>

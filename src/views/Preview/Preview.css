@@ -1,8 +1,8 @@
 .section-preview {
   height: 100%;
   width: 100%;
-  /* background-image: url("/assets/fondo1.jpg"); */
-  background-color: rgba(136, 136, 136, 0.5);
+  background-image: url("/assets/OIG.jpg");
+  /* background-color: rgba(136, 136, 136, 0.5); */
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -13,17 +13,54 @@
 }
 
 .inputs-xample {
-  background: rgba(255, 255, 255, 0.726);
+  background: rgb(255, 255, 255);
   color: rgb(100, 100, 100);
   height: auto;
   width: 394px;
   border-radius: 5px;
   opacity: 1;
   padding: 35px 30px;
+  position: relative;
 
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 25px;
+}
+
+.button-preview {
+  display: flex;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  cursor: pointer;
+  background-color: #3f00ff;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 11px;
+}
+
+.vistaPrevia {
+  position: absolute;
+  top: -50px;
+  font-size: 24px;
+  color: #dd0000;
+  font-family: Poppins-Medium;
+}
+
+.downButton-preview {
+  background: #0072ff;
+  width: 334px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.downButton-preview:hover {
+  background: #57a2ff;
 }

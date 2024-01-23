@@ -53,3 +53,18 @@ export const patchUserTel = createAsyncThunk('user/patchUserTel',
     return data
   }
 )
+
+export const postNewForm = createAsyncThunk('inputs/postNewForm',
+  async (inputs, thunkAPI) => {
+    try {
+      const requestOptions = objectPost(inputs) // esto solo retorna un objetoPost
+      const response = await fetch(`${API}/form`, requestOptions)
+      const data = await response.json()
+      console.log(data)
+      // const { details } = data
+      return true
+    } catch (error) {
+      return { error }
+    }
+  }
+)

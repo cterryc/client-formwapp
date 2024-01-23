@@ -15,7 +15,7 @@
   z-index: 99;
   top: 40px;
   right: 0px;
-  background: #7b71ee;
+  background: #5283df;
   min-width: 120px;
   min-height: 30px;
   font-size: 18px;
@@ -33,7 +33,7 @@
   z-index: 99;
   top: 80px;
   right: 0px;
-  background: #7b71ee;
+  background: #5283df;
   min-width: 100px;
   min-height: 30px;
   font-size: 18px;
@@ -108,7 +108,7 @@
 
 .button-dasboard {
   height: 40px;
-  background-color: #7b71ee;
+  background-color: #5283df;
   color: white;
   width: 150px;
   border-radius: 5px;

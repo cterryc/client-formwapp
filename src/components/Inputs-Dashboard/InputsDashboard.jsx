@@ -1,9 +1,11 @@
+// InputsDashboard.js
 import React, { useEffect, useState } from 'react'
 import {
   DndContext,
   closestCenter,
   KeyboardSensor,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors
 } from '@dnd-kit/core'
@@ -20,6 +22,7 @@ export default function InputsDashboard ({ arrayInputs, deleteInput }) {
   const [items, setItems] = useState([])
   const sensors = useSensors(
     useSensor(PointerSensor),
+    useSensor(TouchSensor, { activationConstraint: { distance: 10 } }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates
     })
