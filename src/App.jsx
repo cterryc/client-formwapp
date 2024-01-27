@@ -12,7 +12,6 @@ import Preview from './views/Preview/Preview'
 
 function App () {
   const { pathname } = useLocation()
-  console.log('MERGE')
 
   return (
     <section className='section-app'>

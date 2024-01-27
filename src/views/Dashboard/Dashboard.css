@@ -16,10 +16,13 @@
   top: 40px;
   right: 0px;
   background: #5283df;
-  min-width: 120px;
+  min-width: 130px;
   min-height: 30px;
-  font-size: 18px;
+  font-size: 13px;
   border-radius: 5px 0px 0px 5px;
+
+  display: flex;
+  align-items: center;
 }
 
 .prevista-section:hover {
@@ -34,9 +37,9 @@
   top: 80px;
   right: 0px;
   background: #5283df;
-  min-width: 100px;
+  min-width: 130px;
   min-height: 30px;
-  font-size: 18px;
+  font-size: 13px;
   border-radius: 5px 0px 0px 5px;
 
   display: flex;
@@ -44,6 +47,27 @@
 }
 
 .guardar-section:hover {
+  background: #a9a3e9;
+  cursor: pointer;
+}
+
+.compartir-section {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  z-index: 99;
+  top: 120px;
+  right: 0px;
+  background: #5283df;
+  min-width: 130px;
+  min-height: 30px;
+  font-size: 13px;
+  border-radius: 5px 0px 0px 5px;
+
+  display: flex;
+  align-items: center;
+}
+
+.compartir-section:hover {
   background: #a9a3e9;
   cursor: pointer;
 }

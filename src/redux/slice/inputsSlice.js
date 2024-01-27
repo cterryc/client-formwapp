@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { postNewForm } from '../actions'
+import { getInputsFromByUserId, /* getInputsFromDb */ postNewForm } from '../inputsActions.js'
 
 const initialState = {
   preview: [],
@@ -21,10 +21,22 @@ export const inputsSlice = createSlice({
         state.loading = true
       })
       .addCase(postNewForm.fulfilled, (state, action) => {
-        state.inputsSave = false
+        state.inputsSave = action.payload
         state.loading = true
       })
       .addCase(postNewForm.rejected, (state, action) => {
+        state.loading = false
+        console.log(action.payload)
+        state.error = action.error.message
+      })
+      .addCase(getInputsFromByUserId.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(getInputsFromByUserId.fulfilled, (state, action) => {
+        state.inputsSave = action.payload
+        state.loading = true
+      })
+      .addCase(getInputsFromByUserId.rejected, (state, action) => {
         state.loading = false
         console.log(action.payload)
         state.error = action.error.message

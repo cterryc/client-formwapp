@@ -3,18 +3,21 @@ import InputsDashboard from '../../components/Inputs-Dashboard/InputsDashboard'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import './Dashboard.css'
-import ImageUpload from '../../components/ImageUpload/ImageUpload'
-import SaveSvg from '../../assets/save'
+// import ImageUpload from '../../components/ImageUpload/ImageUpload'
+// import SaveSvg from '../../assets/save'
 import { setPreviewInputs } from '../../redux/slice/inputsSlice'
 import { MdOutlinePhoneIphone } from 'react-icons/md'
 import { FaCaretDown } from 'react-icons/fa6'
 import { countries } from '../Preview/PreviewInputs/services/countries.service'
-import { patchUserTel, postNewForm } from '../../redux/actions'
+import { patchUserTel } from '../../redux/actions'
+import { getInputsFromByUserId, postNewForm } from '../../redux/inputsActions'
 import swal from 'sweetalert'
+import { IoIosShareAlt } from 'react-icons/io'
+import { VscOpenPreview } from 'react-icons/vsc'
+import { LiaSaveSolid } from 'react-icons/lia'
 
 const Dashboard = () => {
-  const { userState } = useSelector(state => state)
-  console.log(userState)
+  const userState = useSelector(state => state.userState)
   const navigate = useNavigate()
   const inputButtons = [
     { name: 'Nombre', id: 'name', type: 'text' },
@@ -28,19 +31,18 @@ const Dashboard = () => {
   const [selectValue, setSelectValue] = useState(null)
   const [alert, setAlert] = useState(null)
   const disaptch = useDispatch()
-  const inputState = useSelector(state => state.inputsState)
+  const { preview, inputsSave } = useSelector(state => state.inputsState)
+  console.log(inputsSave)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (inputState.preview.length > 0) {
-      setArrayIputs(inputState.preview)
+    // no es bucle, se solicita para renderizar los inputs desde el back al cargar la pagina
+    if (preview.length > 0) {
+      setArrayIputs(preview)
     }
+    dispatch(getInputsFromByUserId(userState.id))
   }, [])
-
-  useEffect(() => {
-    console.log(selectValue, phone)
-  }, [selectValue])
 
   useEffect(() => {
     if (userState.verified === false) {
@@ -68,9 +70,7 @@ const Dashboard = () => {
   }
 
   const deleteInput = (id) => {
-    console.log(arrayInputs)
     const filterInput = arrayInputs.filter(ele => ele.id !== id)
-    console.log(filterInput, 'esto es filterInput')
     setArrayIputs(filterInput)
     disaptch(setPreviewInputs(filterInput))
   }
@@ -82,7 +82,6 @@ const Dashboard = () => {
   // Patch prop tel en user
   const handleOnSubmit = (e) => {
     e.preventDefault()
-    console.log('esto es alert =>', alert)
     if (selectValue && phone) {
       disaptch(patchUserTel({ userId: userState.id, dataToPatch: { tel: { country: selectValue, numberPhone: phone } } }))
     } else {
@@ -97,7 +96,6 @@ const Dashboard = () => {
   }
 
   const handleSelectChange = (e) => {
-    console.log('enetro en select')
     setAlert(null)
     setSelectValue(e.target.value)
   }
@@ -105,19 +103,38 @@ const Dashboard = () => {
   const handlePostSaveInputs = () => {
     dispatch(postNewForm({
       inputs: arrayInputs,
-      brand: 'Marca 1',
+      brand: 'Marca-1',
       avatar: userState.avatar,
       userId: userState.id
     }))
-    swal('Verificado', 'correcto', 'success')
+    swal('Guardado', 'Se guardo correctamente', 'success')
   }
 
   return (
     <section className='section-dashboard'>
-      <button className='prevista-section' onClick={handleGetAllInputs}>Vista Previa</button>
+      <button className='prevista-section' onClick={handleGetAllInputs}>
+        <div style={{ paddingLeft: 2 }}>
+          <VscOpenPreview size={20} />
+        </div>
+        <div style={{ paddingLeft: 3 }}>
+          Vista Previa
+        </div>
+      </button>
       <button className='guardar-section' onClick={handlePostSaveInputs}>
-        <SaveSvg />
-        Guardar
+        <div style={{ paddingLeft: 2 }}>
+          <LiaSaveSolid size={20} />
+        </div>
+        <div style={{ paddingLeft: 3 }}>
+          Guardar
+        </div>
+      </button>
+      <button className='compartir-section' onClick={handlePostSaveInputs}>
+        <div style={{ paddingLeft: 2 }}>
+          <IoIosShareAlt size={20} />
+        </div>
+        <div style={{ paddingLeft: 3 }}>
+          Compartir Form
+        </div>
       </button>
       <div className='buttonsInputs-dashboard'>
         <h1 className='tittle-selectButton-dashboard'>Seleccionar las entradas que iran en el formulario</h1>
@@ -136,9 +153,9 @@ const Dashboard = () => {
         {userState.tel
           ? (
             <div style={{ overflowY: 'auto' }}>
-              <div className='marcaUsuario-dashboard'>
+              {/* <div className='marcaUsuario-dashboard'>
                 <ImageUpload />
-              </div>
+              </div> */}
               <InputsDashboard arrayInputs={arrayInputs} deleteInput={deleteInput} />
               <div className='buttonContainer-dashboard'>
                 <button className='button-dasboard'>Enviar</button>
@@ -169,7 +186,7 @@ const Dashboard = () => {
               }}
               >
                 <div style={{ width: 40 }}>
-                  <MdOutlinePhoneIphone size={20} />
+                  <MdOutlinePhoneIphone size={22} />
                 </div>
                 <div className='select-container-dashboard'>
                   <select onChange={handleSelectChange} className='selector-dashboard'>
